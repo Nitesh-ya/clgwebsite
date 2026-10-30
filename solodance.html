@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Solo Dance Anchoring Script - Nitesh & Krishna</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 14mm 14mm 14mm 14mm;
+
+            @bottom-center {
+                content: "Fresher Party • Anchoring Cue Sheet • Page " counter(page) " of " counter(pages);
+                font-size: 8pt;
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+                color: #94a3b8;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background-color: #ffffff;
+            font-size: 9pt;
+            line-height: 1.35;
+        }
+
+        /* Compact Header */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 3px solid #6366f1;
+        }
+
+        .header-left h1 {
+            margin: 0;
+            font-size: 16pt;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #f8fafc;
+        }
+
+        .header-left p {
+            margin: 2px 0 0 0;
+            font-size: 8.5pt;
+            color: #a5b4fc;
+            font-weight: 500;
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        .badge-host {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 8pt;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .badge-nitesh {
+            background-color: rgba(37, 99, 235, 0.25);
+            color: #93c5fd;
+            border: 1px solid #3b82f6;
+        }
+
+        .badge-krishna {
+            background-color: rgba(217, 119, 6, 0.25);
+            color: #fcd34d;
+            border: 1px solid #f59e0b;
+        }
+
+        /* Section Card */
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+            page-break-inside: avoid;
+            break-inside: avoid;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 5px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .performer-tag {
+            font-size: 8pt;
+            font-weight: 700;
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #c7d2fe;
+        }
+
+        .performer-tag.reserve {
+            background: #fef3c7;
+            color: #b45309;
+            border-color: #fde68a;
+        }
+
+        .card-body {
+            padding: 8px 12px;
+        }
+
+        /* Dialogue Rows */
+        .dialogue-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 5px;
+            font-size: 9pt;
+        }
+
+        .dialogue-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .speaker {
+            width: 68px;
+            min-width: 68px;
+            font-weight: 800;
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .speaker.nitesh {
+            color: #1d4ed8;
+        }
+
+        .speaker.krishna {
+            color: #b45309;
+        }
+
+        .speaker.both {
+            color: #7e22ce;
+        }
+
+        .speaker.audience {
+            color: #059669;
+        }
+
+        .speech {
+            flex: 1;
+            color: #1e293b;
+        }
+
+        .stage-action {
+            color: #64748b;
+            font-style: italic;
+            font-size: 8pt;
+            margin-right: 4px;
+        }
+
+        .highlight-shout {
+            font-weight: 700;
+            color: #dc2626;
+        }
+
+        /* Callout for interactions */
+        .crowd-callout {
+            background-color: #f0fdf4;
+            border-left: 3px solid #22c55e;
+            padding: 4px 8px;
+            border-radius: 0 4px 4px 0;
+            margin: 4px 0;
+        }
+
+        .after-act {
+            background-color: #f8fafc;
+            border-top: 1px dashed #cbd5e1;
+            margin-top: 6px;
+            padding-top: 5px;
+        }
+
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Solo Dance Stage Script</h1>
+            <p>Fresher Party Extravaganza • High-Voltage Stage Interaction</p>
+        </div>
+        <div class="header-badges">
+            <div class="badge-host badge-nitesh">🎤 Anchor 1: NITESH (Lead)</div>
+            <div class="badge-host badge-krishna">🎤 Anchor 2: KRISHNA</div>
+        </div>
+    </div>
+
+    <!-- Opening & Act 1 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">🚀 Opening Kickoff & Crowd Battle</span>
+            <span class="performer-tag">Act 01 • Suryanshu Yadav</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Good evening freshers! Are you guys ready for some explosive, jaw-dropping dance
+                    performances today?[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Wait wait wait Nitesh... mujhe genuinely lagta nahi hai ki ye log ready hain! Awaaz
+                    mein bilkul dum nahi tha![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Really Krishna? Chalo ek real crowd test lete hain! Left side of the hall, are you
+                    ready?![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Left Side:</span>
+                <span class="speech"><b>YESSSS!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Not bad! Lekin Right side walo, can you be twice as louder?![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Right Side:</span>
+                <span class="speech"><b>YESSSSSSS!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Oho! Ab lag raha hai ki party poore shabaab par shuru hone wali hai![cite:
+                    1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Toh chaliye, without wasting even a single second, let's open the dance floor with
+                    our very first rockstar![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech">Put your hands together for <b>SURYANSHU YADAV</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech"><span class="stage-action">(Crowd countdown)</span> 3...[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">2...[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech"><span class="highlight-shout">1... MAKE SOME NOISEEEE!</span>[cite: 1]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Act 2 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">⚡ Interactive Hands-Up Task</span>
+            <span class="performer-tag">Act 02 • Ravi Kumar Manjhi</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">WOH-HO! Kya zabardast power-packed opening thi! Suryanshu ne pehle hi act mein
+                    stage garam kar diya![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Seriously yaar! Lekin freshers, abhi toh ye sirf trailer tha, picture poori baaki
+                    hai![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Absolutely! Par next performer ko bulane se pehle, audience ke liye ek simple rule
+                    aur chhota sa task.[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Jisko bhi dance dekhna aur music sunna pasand hai... raise your hand high![cite:
+                    1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Aur jisko canteen ya hostel mein secretly dance karna pasand hai... unke dono hands
+                    up in the air![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Kya baat hai, full hall involved! Ab isi electric energy ke saath welcome karte
+                    hain hamare next dancing dynamo ko![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Taaliyan, cheering, and loud whistles rukni nahi chahiye for—[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech">The fantastic <b>RAVI KUMAR MANJHI</b>! Stage is all yours![cite: 1]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Act 3 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">🥊 Audience Volume Battle</span>
+            <span class="performer-tag">Act 03 • Satyam Yadav</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Nitesh, mere dimaag mein ek mast idea hai... thoda sa healthy competition ho
+                    jaye?[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Competition? Kis baat ka bhai? Stage par ya audience mein?[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Stage performers toh aag laga hi rahe hain, let's test our freshers audience![cite:
+                    1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Challenge accepted! Left side squad, show them your real power! Scream loud![cite:
+                    1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Left Side:</span>
+                <span class="speech"><b>WOOOOOOOOO!</b></span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Right side champions, kya aap haar man loge? Let me hear your roar![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Right Side:</span>
+                <span class="speech"><b>YEAAAHHHHHHH!</b></span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Tie! Dono sides ek se badhkar ek hain! Ab dekhte hain stage par kaun apni smooth
+                    moves se hum sabko surprise karta hai![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Get ready for pure swag, unmatched rhythm, and killer style. Welcome—<b>SATYAM
+                        YADAV</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech"><span class="highlight-shout">SCREAM AND MAKE SOME NOISE!</span>[cite: 1]</span>
+            </div>
+            <div class="after-act">
+                <div class="dialogue-row">
+                    <span class="speaker nitesh">Nitesh:</span>
+                    <span class="speech"><span class="stage-action">(Walking in post act)</span> Wow! That was totally
+                        smooth and mind-blowing![cite: 1]</span>
+                </div>
+                <div class="dialogue-row">
+                    <span class="speaker krishna">Krishna:</span>
+                    <span class="speech">Audience, kaisa laga Satyam ka performance?! Zor se ek baar aur big round of
+                        applause for Satyam Yadav![cite: 1]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Solo Dance Stage Script</h1>
+            <p>Fresher Party Extravaganza • Mid-Show Boosters & Flexible Reserve Slots</p>
+        </div>
+        <div class="header-badges">
+            <div class="badge-host badge-nitesh">🎤 Anchor 1: NITESH (Lead)</div>
+            <div class="badge-host badge-krishna">🎤 Anchor 2: KRISHNA</div>
+        </div>
+    </div>
+
+    <!-- Act 4 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">🔥 Chant Rally: "WE WANT MORE"</span>
+            <span class="performer-tag">Act 04 • Nitish Gond</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Batch of 2026, abhi tak full maza aa raha hai sabko?![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>YESSSSS!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Bas itni si energy? Freshers party mein aaye ho ya 9 AM ke morning lecture mein
+                    baithe ho?[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Krishna ko chahiye 100% full volume! Ek line mere saath poora hall ek aawaz mein
+                    bolega—[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech"><span class="highlight-shout">WE... WANT... MORE!</span>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>WE WANT MORE!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Now that’s what I'm talking about! Isi high-frequency vibe par agla performer stage
+                    conquer karne aa raha hai![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Inke moves sharp hain aur beats deadly! Give the loudest cheer for my
+                    namesake—<b>NITISH GOND</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech">Taaliyan rukni nahi chahiye! Let's groove![cite: 1]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reserve Act 1 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">🎯 Call & Response Energy Booster</span>
+            <span class="performer-tag reserve">Reserve Act 01 • Open Slot</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Dosto, dil pe haath rakhke ek honest answer do... are you loving this party
+                    today?![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>YESSSSS!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Toh chalo, agle act ke liye game aur dynamic banate hain! Ek sync drill karte
+                    hain.[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Jab main bolunga 'CLAP', poora hall do baar taali bajayega![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Aur jab main bolunga 'CHEER', sab log seeti aur shor machayenge![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">CLAP! <span class="stage-action">(Crowd claps twice)</span>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">CHEER! <span class="stage-action">(Crowd roars loud)</span>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Phenomenal! Now bring that exact roar for our next sensational
+                    performer—<b>[NAME]</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech">3... 2... 1... <span class="highlight-shout">LET’S GOOOOO!</span>[cite: 1]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reserve Act 2 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">✨ Spotlight Solo Momentum</span>
+            <span class="performer-tag reserve">Reserve Act 02 • Open Slot</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Look at this stadium energy, Krishna! It's just getting bigger, bolder, and louder
+                    with every passing beat![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Bilkul Nitesh! Aur jab audience ka josh itna peak par ho, toh back-to-back
+                    performances toh banti hain![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Are you ready to see the next dance warrior set the floor on fire?! Hands together
+                    for—<b>[NAME]</b>![cite: 1]</span>
+            </div>
+            <div class="after-act">
+                <div class="dialogue-row">
+                    <span class="speaker nitesh">Nitesh:</span>
+                    <span class="speech"><span class="stage-action">(Post Act)</span> Kya swag tha, kya footwork tha!
+                        That was pure electrifying art![cite: 1]</span>
+                </div>
+                <div class="dialogue-row">
+                    <span class="speaker both">Both:</span>
+                    <span class="speech">Once more, give a huge thunderous round of applause for <b>[NAME]</b>![cite:
+                        1]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ==================== PAGE 3 ==================== -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Solo Dance Stage Script</h1>
+            <p>Fresher Party Extravaganza • Grand Finale & DJ Transition</p>
+        </div>
+        <div class="header-badges">
+            <div class="badge-host badge-nitesh">🎤 Anchor 1: NITESH (Lead)</div>
+            <div class="badge-host badge-krishna">🎤 Anchor 2: KRISHNA</div>
+        </div>
+    </div>
+
+    <!-- Reserve Act 3 -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">🔊 High Voltage Warmup</span>
+            <span class="performer-tag reserve">Reserve Act 03 • Open Slot</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Wait... Nitesh, mujhe lagta hai audience aur dancers ke andar abhi bhi unstoppable
+                    energy baaki hai![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Is that true freshers? Kya ek aur mind-blowing solo act dekhne ke liye stamina
+                    bacha hai?![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>YESSSSSSS!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Then why stop? Let’s keep this party engine running on full throttle![cite:
+                    1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Next performer is fully charged up backstage! Put your hands up
+                    for—<b>[NAME]</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">DJ, crank up the volume! Let’s drop the beat![cite: 1]</span>
+            </div>
+            <div class="after-act">
+                <div class="dialogue-row">
+                    <span class="speaker nitesh">Nitesh:</span>
+                    <span class="speech"><span class="stage-action">(Post Act)</span> Now THAT is how you keep the vibe
+                        going non-stop![cite: 1]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Act 6: Grand Finale -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">👑 Ultimate Solo Finale Act</span>
+            <span class="performer-tag">Act 06 • Ravi Kumar Manjhi</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Guys and girls... we have officially reached our final and most anticipated solo
+                    dance performance of the evening![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Wait... final performance? Nitesh, toh kya ab energy thodi low kar lein?[cite:
+                    1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Bilkul nahi! Rule simple hai—aakhri performance mein toh shor sabse uncha aur wild
+                    hona chahiye![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Agreed! Chalo ek aakhri test lete hain. Jab hum bolenge <b>"FRESHERS"</b>, aap sab
+                    bolenge <b>"ROCK"</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech"><span class="highlight-shout">FRESHERS!</span>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>ROCK!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech"><span class="highlight-shout">FRESHERS!!!</span>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>ROCKKKKKKKKK!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">That is the real spirit! Please put your hands together for the king of the
+                    stage...[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Welcoming our grand finale performer—<b>RAVI KUMAR MANJHI</b>![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">DJ, let the bass drop! Hit the music![cite: 1]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wrap-up / Outro -->
+    <div class="card" style="border: 2px solid #6366f1;">
+        <div class="card-header" style="background-color: #eef2ff;">
+            <span class="card-title" style="color: #3730a3;">🎉 Segment Wrap-Up & Open Dance Floor Launch</span>
+            <span class="performer-tag" style="background:#4338ca; color:#fff;">Grand Climax</span>
+        </div>
+        <div class="card-body">
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">WOW! What a jaw-dropping lineup of pure solo dancing mastery! Give it up for every
+                    single performer today![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Seriously! Har performer ne stage par apna ek unique attitude aur fire showcase
+                    kiya![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Freshers batch, did you enjoy every second of it?![cite: 1]</span>
+            </div>
+            <div class="dialogue-row crowd-callout">
+                <span class="speaker audience">Audience:</span>
+                <span class="speech"><b>YESSSSSSS!</b>[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker krishna">Krishna:</span>
+                <span class="speech">Dosto, ye stage performances toh bas ek shandar trailer tha...[cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker nitesh">Nitesh:</span>
+                <span class="speech">Kyunki ab open dance floor aur DJ floor aap sabka intezaar kar raha hai! Asli
+                    picture ab shuru hogi![cite: 1]</span>
+            </div>
+            <div class="dialogue-row">
+                <span class="speaker both">Both:</span>
+                <span class="speech"><span class="highlight-shout">HAVE A BLAST AND ENJOY YOUR FRESHER PARTY!</span>
+                    Thank you everyone![cite: 1]</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

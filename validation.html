@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    
+</head>
+<body>
+    <form action="registration.php" method="post" name="form">
+        <table>
+            <tr>
+                <td>User Name</td>
+                <td><input name="username" type="text" size="40" /></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input name="password" type="password" size="40" /></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input id="letters" name="fname" type="text" size="40" />
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>
+                    <input id="letters" name="lname" type="text" size="40" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email Add</td>
+                <td>
+                    <input id="demail" name="demail" type="text" size="40" />
+                </td>
+            </tr>
+            <tr>
+                <td>Gender :</td>
+                <td>
+                    <input type="radio" name="sex" value="male" />Male
+                    <input type="radio" name="sex" value="female" />Female
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>
+                    <input name="dateofbirth" type="text" size="40">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="button" type="submit" name="submit" value="Submit" onclick="return validation(); " />
+                </td>
+            </tr>
+        </table></form>
+
+</body>
+<script>
+    function validation() {
+        if (document.form.username.value == "") {
+            alert("Please User Name First");
+            document.form.username.focus();
+            return false;
+        }
+        else if (document.form.password.value == "") {
+            alert("Please Password First");
+            document.form.password.focus();
+            return false;
+        }
+        else if (document.form.fname.value == "") {
+            alert("Please First Name");
+            document.form.fname.focus();
+            return false;
+        }
+        else if (document.form.lname.value == "") {
+            alert("Please Last Name");
+            document.form.lname.focus();
+            return false;
+        }
+        else if (document.form.demail.value == "") {
+            alert("Please E-mail First");
+            document.form.demail.focus();
+            return false;
+        }
+        else if ((document.form.sex[0].checked == false) && (document.form.sex[1].checked == false)) {
+            alert("Please Gender First");
+            return false;
+        }
+        else if (document.form.dateofbirth.value == "") {
+            alert("Please DOB First");
+            document.form.dateofbirth.focus();
+            return false;
+        }
+    }
+</script>
+</html>
